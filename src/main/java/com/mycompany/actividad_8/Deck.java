@@ -60,27 +60,49 @@ public class Deck {
 
     public void head() {
 
-        System.out.println("Primer carta del mazo\n" + mazoRevuelto.remove(0));
-        System.out.println("Quedan: " + mazoRevuelto.size() + " en el Deck\n");
+        if (mazoRevuelto.isEmpty()) {
+            System.out.println("Primer carta del mazo\n" + mazo.remove(0));
+            System.out.println("Quedan: " + mazo.size() + " en el Deck\n");
+        } else {
+            System.out.println("Primer carta del mazo\n" + mazoRevuelto.remove(0));
+            System.out.println("Quedan: " + mazoRevuelto.size() + " en el Deck\n");
+        }
     }
 
     public void pick() {
 
-        int r = (int) (Math.random() * mazoRevuelto.size() + 0);
-        System.out.println("Carta al azar del mazo\n" + mazoRevuelto.remove(r));
-        System.out.println("Quedan: " + mazoRevuelto.size() + " en el Deck\n");
+        if (mazoRevuelto.isEmpty()) {
+            int r = (int) (Math.random() * mazo.size() + 0);
+            System.out.println("Carta al azar del mazo\n" + mazo.remove(r));
+            System.out.println("Quedan: " + mazo.size() + " en el Deck\n");
+        } else {
+            int r = (int) (Math.random() * mazoRevuelto.size() + 0);
+            System.out.println("Carta al azar del mazo\n" + mazoRevuelto.remove(r));
+            System.out.println("Quedan: " + mazoRevuelto.size() + " en el Deck\n");
+        }
     }
 
     public void hand() {
 
-        System.out.println("Cartas al azar del mazo");
-                
-        for (int i = 0; i < 5; i++) {
-            int r = (int) (Math.random() * mazoRevuelto.size() + 0);
-            System.out.println(mazoRevuelto.remove(r));
-        }
+        if (mazoRevuelto.isEmpty()) {
+            System.out.println("Cartas al azar del mazo");
 
-        System.out.println("Quedan: " + mazoRevuelto.size() + " en el Deck");
+            for (int i = 0; i < 5; i++) {
+                int r = (int) (Math.random() * mazo.size() + 0);
+                System.out.println(mazo.remove(r));
+            }
+
+            System.out.println("Quedan: " + mazo.size() + " en el Deck");
+        } else {
+            System.out.println("Cartas al azar del mazo");
+
+            for (int i = 0; i < 5; i++) {
+                int r = (int) (Math.random() * mazoRevuelto.size() + 0);
+                System.out.println(mazoRevuelto.remove(r));
+            }
+
+            System.out.println("Quedan: " + mazoRevuelto.size() + " en el Deck");
+        }
     }
 
     public void imprime() {
