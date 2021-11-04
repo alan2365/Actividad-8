@@ -8,7 +8,7 @@ import java.util.Scanner;
  */
 public class Actividad {
 
-    public static void main(String[] args) {
+    public static void main(String[] args)throws Exception {
         Deck d = new Deck();
 
         d.mazoNuevo();
@@ -21,36 +21,43 @@ public class Actividad {
         Scanner entradaEscaner = new Scanner(System.in);
 
         do {
-            System.out.println("BIENVENIDO AL POKER!\n"
-                    + "Seleccione una opcion:\n"
-                    + "1 Mezclar deck\n"
-                    + "2 Sacar una carta\n"
-                    + "3 Carta al azar\n"
-                    + "4 Generar una mano de 5 cartas\n"
-                    + "0 Salir\n");
-            opc = Integer.parseInt(entradaEscaner.nextLine());
             
-            if(opc > 4){
-                System.out.println("Opción no válida");
-            }
+            try {
+                System.out.println("BIENVENIDO AL POKER!\n"
+                        + "Seleccione una opcion:\n"
+                        + "1 Mezclar deck\n"
+                        + "2 Sacar una carta\n"
+                        + "3 Carta al azar\n"
+                        + "4 Generar una mano de 5 cartas\n"
+                        + "0 Salir\n");
+                opc = Integer.parseInt(entradaEscaner.nextLine());
 
-            switch (opc) {
-                case 1:
-                    D.shuffle();
-                    break;
-                case 2:
-                    D.head();
-                    break;
-                case 3:
-                    D.pick();
-                    break;
-                case 4:
-                    D.hand();
-                    break;
-                case 0:
-                    break;
+                if (opc > 4) {
+                    throw new Exception();
+                }
+
+                switch (opc) {
+                    case 1:
+                        D.shuffle();
+                        break;
+                    case 2:
+                        D.head();
+                        break;
+                    case 3:
+                        D.pick();
+                        break;
+                    case 4:
+                        D.hand();
+                        break;
+                    case 0:
+                        break;
+                }
+                System.out.println();
+
+            } catch (Exception e) {
+                System.out.println("Opcion no valida\n");
             }
-            System.out.println();
+            
         } while (opc != 0);
     }
 }
